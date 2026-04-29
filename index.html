@@ -322,6 +322,14 @@
         .door-realistic-frame:hover .door-backlight {
             opacity: 1;
         }
+
+        /* رسالة نجاح الفورم */
+        #formSuccess {
+            display: none;
+        }
+        #formSuccess.show {
+            display: block;
+        }
     </style>
 </head>
 <body class="text-gray-800 antialiased">
@@ -656,21 +664,21 @@
                             <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-xl"><i class="fas fa-phone-alt"></i></div>
                             <div>
                                 <p class="font-bold text-gray-800" data-i18n="contact_phone_label">اتصل بنا</p>
-                                <p class="text-gray-600 dir-ltr text-left" data-i18n="contact_phone">+201000046215</p>
+                                <p class="text-gray-600 dir-ltr text-left" data-i18n="contact_phone">01000046215</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center text-xl"><i class="fab fa-whatsapp"></i></div>
                             <div>
                                 <p class="font-bold text-gray-800" data-i18n="contact_whatsapp_label">واتساب</p>
-                                <p class="text-gray-600 dir-ltr text-left" data-i18n="contact_whatsapp">+201000046215</p>
+                                <p class="text-gray-600 dir-ltr text-left" data-i18n="contact_whatsapp">01000046215</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 bg-cyan-100 text-cyan-600 rounded-xl flex items-center justify-center text-xl"><i class="fas fa-envelope"></i></div>
                             <div>
                                 <p class="font-bold text-gray-800" data-i18n="contact_email_label">البريد الإلكتروني</p>
-                                <p class="text-gray-600" data-i18n="contact_email">info@sensor-doors.sa</p>
+                                <p class="text-gray-600" data-i18n="contact_email">info@sensor-doors.eg</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-4">
@@ -683,32 +691,52 @@
                     </div>
                 </div>
                 
+                <!-- ============ فورم الاتصال المحسن ============ -->
                 <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-gray-100">
                     <h3 class="text-2xl font-bold mb-6 text-gray-800" data-i18n="form_title">أرسل رسالة</h3>
-                    <form class="space-y-5">
+                    
+                    <!-- Formspree + واتساب -->
+                    <form id="contactForm" action="https://formspree.io/f/xrernlnv" method="POST" class="space-y-5">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="form_name_label">الاسم الكامل</label>
-                            <input type="text" data-i18n-placeholder="form_name_placeholder" placeholder="أدخل اسمك" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
+                            <input type="text" name="fullName" required data-i18n-placeholder="form_name_placeholder" placeholder="أدخل اسمك" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="form_phone_label">رقم الجوال</label>
-                            <input type="tel" data-i18n-placeholder="form_phone_placeholder" placeholder="05xxxxxxxx" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
+                            <input type="tel" name="phone" required data-i18n-placeholder="form_phone_placeholder" placeholder="01xxxxxxxx" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="form_service_label">نوع الخدمة</label>
-                            <select id="form-service-select" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
-                                <option>صيانة دورية</option>
-                                <option>توريد أبواب</option>
-                                <option>قطع غيار</option>
-                                <option>استشارة فنية</option>
-                                <option>أخرى</option>
+                            <select id="form-service-select" name="service" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
+                                <option value="صيانة دورية">صيانة دورية</option>
+                                <option value="توريد أبواب">توريد أبواب</option>
+                                <option value="قطع غيار">قطع غيار</option>
+                                <option value="استشارة فنية">استشارة فنية</option>
+                                <option value="أخرى">أخرى</option>
                             </select>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="form_message_label">الرسالة</label>
-                            <textarea rows="4" data-i18n-placeholder="form_message_placeholder" placeholder="اكتب تفاصيل طلبك..." class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"></textarea>
+                            <textarea name="message" rows="4" required data-i18n-placeholder="form_message_placeholder" placeholder="اكتب تفاصيل طلبك..." class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"></textarea>
                         </div>
-                        <button type="submit" class="btn-primary w-full text-white font-bold py-3 rounded-xl shadow-lg flex items-center justify-center gap-2" data-i18n="form_submit"><i class="fas fa-paper-plane"></i> إرسال الطلب</button>
+                        
+                        <!-- زري الإرسال -->
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <button type="submit" class="btn-primary flex-1 text-white font-bold py-3 rounded-xl shadow-lg flex items-center justify-center gap-2" data-i18n="form_submit">
+                                <i class="fas fa-paper-plane"></i> إرسال الطلب
+                            </button>
+                            <button type="button" id="whatsappSubmitBtn" class="bg-green-500 hover:bg-green-600 flex-1 text-white font-bold py-3 rounded-xl shadow-lg flex items-center justify-center gap-2 transition">
+                                <i class="fab fa-whatsapp"></i> واتساب
+                            </button>
+                        </div>
+                        
+                        <!-- رسالة نجاح/فشل -->
+                        <div id="formSuccess" class="hidden bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-xl text-sm text-center">
+                            ✅ تم الإرسال بنجاح! سنتواصل معك قريباً.
+                        </div>
+                        <div id="formError" class="hidden bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm text-center">
+                            ❌ حدث خطأ. جرب واتساب.
+                        </div>
                     </form>
                 </div>
             </div>
@@ -748,7 +776,7 @@
             </div>
             <div class="border-t border-gray-700 pt-6 text-center text-sm">
                 <p data-i18n="footer_copyright">© 2026 شركة سينسور الأندلس للأبواب الفتوسيل الأوتوماتيك. جميع الحقوق محفوظة.</p>
-                <p>Designed by <a href="https://me-one-blue.vercel.app/about.html">Mr.Developer</a></p>
+                <p>Designed by <a href="https://me-one-blue.vercel.app/about.html" class="hover:text-cyan-400 transition">Mr.Developer</a></p>
             </div>
             
         </div>
@@ -759,7 +787,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Multilingual Script -->
+    <!-- Multilingual Script + Form Handler -->
     <script>
         (function() {
             const translations = {
@@ -870,7 +898,7 @@
                     about_heading: "Sensor Al-Andalos Automatic Doors Company",
                     about_description: "Extensive experience in automatic doors, ensuring our customers the best services with high quality and competitive prices.",
                     about_vision_title: "Our Vision",
-                    about_vision_desc: "To be the first choice in the Kingdom for smart and safe automatic door solutions.",
+                    about_vision_desc: "To be the first choice in Egypt for smart and safe automatic door solutions.",
                     about_mission_title: "Our Mission",
                     about_mission_desc: "Provide integrated maintenance and supply services around the clock with the highest professional standards.",
                     about_values_title: "Our Values",
@@ -917,7 +945,7 @@
                     form_name_label: "Full Name",
                     form_name_placeholder: "Enter your name",
                     form_phone_label: "Mobile Number",
-                    form_phone_placeholder: "05xxxxxxxx",
+                    form_phone_placeholder: "01xxxxxxxx",
                     form_service_label: "Service Type",
                     form_service_options: ["Periodic Maintenance", "Door Supply", "Spare Parts", "Technical Consultation", "Other"],
                     form_message_label: "Message",
@@ -980,7 +1008,7 @@
 
                 if (formServiceSelect) {
                     const options = translations[lang].form_service_options;
-                    formServiceSelect.innerHTML = options.map(opt => `<option>${opt}</option>`).join('');
+                    formServiceSelect.innerHTML = options.map(opt => `<option value="${opt}">${opt}</option>`).join('');
                 }
 
                 if (heroTextContainer) {
@@ -1038,6 +1066,57 @@
                 link.addEventListener('click', () => {
                     menu.classList.add('hidden');
                 });
+            });
+
+            // ============ نظام إرسال الفورم ============
+            
+            // إرسال إلى واتساب
+            document.getElementById('whatsappSubmitBtn').addEventListener('click', function() {
+                const name = document.querySelector('input[name="fullName"]').value.trim();
+                const phone = document.querySelector('input[name="phone"]').value.trim();
+                const service = document.querySelector('select[name="service"]').value;
+                const message = document.querySelector('textarea[name="message"]').value.trim();
+                
+                if (!name || !phone) {
+                    alert('الرجاء إدخال الاسم ورقم الجوال على الأقل');
+                    return;
+                }
+                
+                const whatsappNumber = '201000046215';
+                const text = `🚪 طلب خدمة جديد من موقع سينسور:\n\n👤 الاسم: ${name}\n📱 الجوال: ${phone}\n🔧 نوع الخدمة: ${service}\n📝 الرسالة: ${message}`;
+                const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+                window.open(url, '_blank');
+            });
+
+            // إرسال إلى Formspree
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(contactForm);
+                
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    
+                    if (response.ok) {
+                        document.getElementById('formSuccess').classList.remove('hidden');
+                        document.getElementById('formError').classList.add('hidden');
+                        contactForm.reset();
+                        setTimeout(() => {
+                            document.getElementById('formSuccess').classList.add('hidden');
+                        }, 5000);
+                    } else {
+                        document.getElementById('formError').classList.remove('hidden');
+                        document.getElementById('formSuccess').classList.add('hidden');
+                    }
+                } catch (error) {
+                    document.getElementById('formError').classList.remove('hidden');
+                    document.getElementById('formSuccess').classList.add('hidden');
+                }
             });
         })();
     </script>
