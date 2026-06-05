@@ -4,41 +4,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="شركة سينسور للأبواب الأوتوماتيكية – صيانة وتوريد وتركيب أبواب فتوسيل للمستشفيات والمولات والفنادق">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="سينسور - أبواب أوتوماتيكية">
+    <meta property="og:description" content="شركة سينسور الأندلس للأبواب الأوتوماتيكية – صيانة وتوريد وتركيب أبواب فتوسيل">
+    <meta property="og:image" content="post.jpg">
+    <meta property="og:type" content="website">
+    
     <title data-i18n="title">سينسور - أبواب أوتوماتيكية</title>
+    
     <!-- Google Fonts: Tajawal & Cairo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <style>
+        /* ============ الأساسيات ============ */
         body {
             font-family: 'Tajawal', 'Cairo', sans-serif;
             scroll-behavior: smooth;
             background-color: #f9fafb;
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
         }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        /* ============ التدرجات ============ */
         .hero-gradient {
             background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            position: relative;
+            overflow: hidden;
         }
+        
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,208C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            pointer-events: none;
+        }
+        
         .glass-card {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
+        
+        /* ============ البطاقات ============ */
+        .service-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
         .service-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 35px rgba(0,0,0,0.1);
         }
+        
+        /* ============ الأزرار ============ */
         .btn-primary {
             background: linear-gradient(135deg, #0052D4, #4364F7, #6FB1FC);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
+        
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn-primary:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+        
         .btn-primary:hover {
             background: linear-gradient(135deg, #003eb3, #3651d9, #5a9de0);
             transform: scale(1.02);
         }
+        
+        /* ============ زر الواتساب العائم ============ */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -55,21 +121,58 @@
             box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
             z-index: 1000;
             transition: all 0.3s;
+            animation: pulse 2s infinite;
         }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
         .whatsapp-float:hover {
             transform: scale(1.1);
             box-shadow: 0 12px 25px rgba(37, 211, 102, 0.6);
+            animation: none;
         }
+        
+        /* ============ التنقل ============ */
         html {
             scroll-padding-top: 80px;
         }
+        
         .lang-btn.active {
             background-color: #2563eb;
             color: white;
             border-color: #2563eb;
         }
         
-        /* أنيميشن الباب الأوتوماتيكي الحقيقي */
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #2563eb;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* ============ أنيميشن الباب الأوتوماتيكي ============ */
         .door-realistic-frame {
             position: relative;
             width: 100%;
@@ -81,11 +184,11 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
+        
         .door-realistic-frame:hover {
             box-shadow: 0 25px 50px rgba(0,0,0,0.6), inset 0 0 0 2px rgba(255,255,255,0.2);
         }
         
-        /* هيكل الباب العلوي */
         .door-header {
             position: absolute;
             top: 0;
@@ -100,6 +203,7 @@
             justify-content: center;
             padding: 0 20px;
         }
+        
         .door-header-text {
             color: white;
             font-size: 16px;
@@ -108,6 +212,7 @@
             letter-spacing: 2px;
             text-shadow: 0 0 10px rgba(0,210,255,0.5);
         }
+        
         .door-header-logo {
             position: absolute;
             right: 15px;
@@ -115,7 +220,6 @@
             color: #00d2ff;
         }
         
-        /* الإطار الجانبي */
         .door-side-frame {
             position: absolute;
             top: 70px;
@@ -124,14 +228,10 @@
             background: linear-gradient(180deg, #2d3436, #636e72);
             z-index: 10;
         }
-        .door-side-frame.left {
-            left: 0;
-        }
-        .door-side-frame.right {
-            right: 0;
-        }
         
-        /* لوح الباب الزجاجي */
+        .door-side-frame.left { left: 0; }
+        .door-side-frame.right { right: 0; }
+        
         .door-glass-panel {
             position: absolute;
             top: 75px;
@@ -144,24 +244,20 @@
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: inset 0 0 20px rgba(255,255,255,0.1);
         }
-        .door-glass-panel.left-panel {
-            left: 40px;
-        }
-        .door-glass-panel.right-panel {
-            right: 40px;
-        }
         
-        /* تأثير فتح الباب */
+        .door-glass-panel.left-panel { left: 40px; }
+        .door-glass-panel.right-panel { right: 40px; }
+        
         .door-realistic-frame:hover .left-panel {
             transform: translateX(-85%);
             opacity: 0.6;
         }
+        
         .door-realistic-frame:hover .right-panel {
             transform: translateX(85%);
             opacity: 0.6;
         }
         
-        /* مقبض الباب */
         .door-handle {
             position: absolute;
             top: 50%;
@@ -173,14 +269,10 @@
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-        .door-handle.left-handle {
-            right: 8px;
-        }
-        .door-handle.right-handle {
-            left: 8px;
-        }
         
-        /* القاعدة السفلية */
+        .door-handle.left-handle { right: 8px; }
+        .door-handle.right-handle { left: 8px; }
+        
         .door-bottom-rail {
             position: absolute;
             bottom: 0;
@@ -194,6 +286,7 @@
             align-items: center;
             justify-content: center;
         }
+        
         .door-bottom-text {
             color: #00d2ff;
             font-size: 12px;
@@ -201,7 +294,6 @@
             letter-spacing: 1px;
         }
         
-        /* شهادة CE */
         .ce-badge {
             position: absolute;
             top: 85px;
@@ -218,11 +310,9 @@
             opacity: 0;
             transition: opacity 0.3s ease 0.5s;
         }
-        .door-realistic-frame:hover .ce-badge {
-            opacity: 1;
-        }
         
-        /* معلومات الضمان */
+        .door-realistic-frame:hover .ce-badge { opacity: 1; }
+        
         .warranty-info {
             position: absolute;
             bottom: 60px;
@@ -240,11 +330,9 @@
             white-space: nowrap;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
-        .door-realistic-frame:hover .warranty-info {
-            opacity: 1;
-        }
         
-        /* ضوء LED */
+        .door-realistic-frame:hover .warranty-info { opacity: 1; }
+        
         .led-indicator {
             position: absolute;
             top: 75px;
@@ -258,12 +346,12 @@
             box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
             animation: blink 1.5s infinite;
         }
+        
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.3; }
         }
         
-        /* مستشعر الحركة */
         .motion-sensor {
             position: absolute;
             top: 55px;
@@ -277,7 +365,6 @@
             box-shadow: 0 0 15px rgba(255,107,107,0.5);
         }
         
-        /* ملصق سينسور الأندلس */
         .sensor-label {
             position: absolute;
             top: 50%;
@@ -289,9 +376,9 @@
             text-align: center;
             pointer-events: none;
         }
-        .door-realistic-frame:hover .sensor-label {
-            opacity: 1;
-        }
+        
+        .door-realistic-frame:hover .sensor-label { opacity: 1; }
+        
         .sensor-label-main {
             font-size: 20px;
             font-weight: 800;
@@ -299,6 +386,7 @@
             text-shadow: 0 0 20px rgba(0,210,255,0.8);
             letter-spacing: 3px;
         }
+        
         .sensor-label-sub {
             font-size: 11px;
             color: white;
@@ -306,7 +394,6 @@
             margin-top: 5px;
         }
         
-        /* إضاءة خلفية عند الفتح */
         .door-backlight {
             position: absolute;
             top: 75px;
@@ -319,28 +406,157 @@
             opacity: 0;
             transition: opacity 0.3s ease 0.4s;
         }
-        .door-realistic-frame:hover .door-backlight {
+        
+        .door-realistic-frame:hover .door-backlight { opacity: 1; }
+        
+        /* ============ شريط التحميل ============ */
+        #page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #0052D4, #4364F7, #6FB1FC);
+            z-index: 9999;
+            transform-origin: left;
+            animation: loading 2s ease forwards;
+        }
+        
+        @keyframes loading {
+            0% { transform: scaleX(0); }
+            100% { transform: scaleX(1); }
+        }
+        
+        /* ============ مكون التقييمات ============ */
+        .testimonial-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+        }
+        
+        .stars {
+            color: #fbbf24;
+        }
+        
+        /* ============ نموذج الاتصال ============ */
+        .input-field {
+            transition: all 0.3s ease;
+        }
+        
+        .input-field:focus {
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        #formSuccess, #formError {
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* ============ تأثير Parallax ============ */
+        .parallax-layer {
+            transition: transform 0.1s ease;
+        }
+        
+        /* ============ القائمة الجانبية للموبايل ============ */
+        #mobile-menu {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        
+        #mobile-menu.show {
+            transform: translateX(0);
             opacity: 1;
         }
-
-        /* رسالة نجاح الفورم */
-        #formSuccess {
-            display: none;
+        
+        /* ============ Lightbox ============ */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
         }
-        #formSuccess.show {
-            display: block;
+        
+        .lightbox-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .lightbox-overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+        
+        /* ============ أدوات إمكانية الوصول ============ */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: #2563eb;
+            color: white;
+            padding: 8px;
+            z-index: 10000;
+            transition: top 0.3s;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+        }
+        
+        /* ============ Responsive ============ */
+        @media (max-width: 768px) {
+            .door-realistic-frame {
+                height: 280px;
+            }
+            
+            .door-header {
+                height: 50px;
+            }
+            
+            .door-header-text {
+                font-size: 12px;
+            }
         }
     </style>
 </head>
 <body class="text-gray-800 antialiased">
+    
+    <!-- شريط التحميل -->
+    <div id="page-loader"></div>
+    
+    <!-- رابط تجاوز المحتوى لإمكانية الوصول -->
+    <a href="#main-content" class="skip-link">تخطي إلى المحتوى الرئيسي</a>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-200/50">
+    <!-- ============ Navigation ============ -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-200/50" role="navigation" aria-label="القائمة الرئيسية">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16 md:h-20">
+                <!-- الشعار -->
                 <div class="flex items-center gap-2">
                     <div class="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center shadow-md">
-                        <i class="fas fa-door-open text-white text-xl"></i>
+                        <i class="fas fa-door-open text-white text-xl" aria-hidden="true"></i>
                     </div>
                     <div>
                         <h1 class="text-lg md:text-xl font-bold text-gray-900 leading-tight" data-i18n="logo_text">سينسور</h1>
@@ -348,408 +564,488 @@
                     </div>
                 </div>
                 
+                <!-- روابط سطح المكتب -->
                 <div class="hidden md:flex items-center gap-4">
-                    <div id="nav-links-desktop" class="flex items-center space-x-6 space-x-reverse">
-                        <a href="#home" class="text-gray-700 hover:text-blue-600 font-medium transition" data-i18n="nav_home">الرئيسية</a>
-                        <a href="#about" class="text-gray-700 hover:text-blue-600 font-medium transition" data-i18n="nav_about">من نحن</a>
-                        <a href="#services" class="text-gray-700 hover:text-blue-600 font-medium transition" data-i18n="nav_services">خدماتنا</a>
-                        <a href="#gallery" class="text-gray-700 hover:text-blue-600 font-medium transition" data-i18n="nav_gallery">معرض الأبواب</a>
-                        <a href="#supply" class="text-gray-700 hover:text-blue-600 font-medium transition" data-i18n="nav_supply">التوريدات</a>
-                        <a href="#contact" class="text-gray-700 hover:text-blue-600 font-medium transition" data-i18n="nav_contact">اتصل بنا</a>
-                        <a href="tel:+201000046215" class="btn-primary text-white px-5 py-2 rounded-full font-semibold shadow-md flex items-center gap-2" data-i18n="nav_phone"><i class="fas fa-phone-alt"></i> 01000046215</a>
-                    </div>
-                    <div class="flex items-center gap-1 border border-gray-200 rounded-full p-1 bg-gray-50">
-                        <button id="lang-ar" class="lang-btn text-sm font-medium px-3 py-1 rounded-full transition active">AR</button>
-                        <button id="lang-en" class="lang-btn text-sm font-medium px-3 py-1 rounded-full transition">EN</button>
+                    <nav id="nav-links-desktop" class="flex items-center space-x-6 space-x-reverse" aria-label="روابط التنقل">
+                        <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition" data-i18n="nav_home">الرئيسية</a>
+                        <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition" data-i18n="nav_about">من نحن</a>
+                        <a href="#services" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition" data-i18n="nav_services">خدماتنا</a>
+                        <a href="#gallery" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition" data-i18n="nav_gallery">معرض الأبواب</a>
+                        <a href="#supply" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition" data-i18n="nav_supply">التوريدات</a>
+                        <a href="#testimonials" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition" data-i18n="nav_testimonials">آراء العملاء</a>
+                        <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 font-medium transition" data-i18n="nav_contact">اتصل بنا</a>
+                        <a href="tel:+201000046215" class="btn-primary text-white px-5 py-2 rounded-full font-semibold shadow-md flex items-center gap-2" data-i18n="nav_phone" aria-label="اتصل على 01000046215">
+                            <i class="fas fa-phone-alt" aria-hidden="true"></i> 01000046215
+                        </a>
+                    </nav>
+                    
+                    <!-- مبدل اللغة -->
+                    <div class="flex items-center gap-1 border border-gray-200 rounded-full p-1 bg-gray-50" role="group" aria-label="تغيير اللغة">
+                        <button id="lang-ar" class="lang-btn text-sm font-medium px-3 py-1 rounded-full transition active" aria-pressed="true">AR</button>
+                        <button id="lang-en" class="lang-btn text-sm font-medium px-3 py-1 rounded-full transition" aria-pressed="false">EN</button>
                     </div>
                 </div>
                 
+                <!-- زر القائمة للموبايل -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-blue-600 focus:outline-none ml-2">
-                        <i class="fas fa-bars text-2xl"></i>
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-blue-600 focus:outline-none ml-2" aria-label="فتح القائمة" aria-expanded="false">
+                        <i class="fas fa-bars text-2xl" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
         </div>
         
-        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-100 shadow-lg absolute w-full">
-            <div class="px-4 py-4 space-y-3">
-                <a href="#home" class="block text-gray-700 hover:text-blue-600 font-medium py-2 border-b border-gray-100" data-i18n="nav_home">الرئيسية</a>
-                <a href="#about" class="block text-gray-700 hover:text-blue-600 font-medium py-2 border-b border-gray-100" data-i18n="nav_about">من نحن</a>
-                <a href="#services" class="block text-gray-700 hover:text-blue-600 font-medium py-2 border-b border-gray-100" data-i18n="nav_services">خدماتنا</a>
-                <a href="#gallery" class="block text-gray-700 hover:text-blue-600 font-medium py-2 border-b border-gray-100" data-i18n="nav_gallery">معرض الأبواب</a>
-                <a href="#supply" class="block text-gray-700 hover:text-blue-600 font-medium py-2 border-b border-gray-100" data-i18n="nav_supply">التوريدات</a>
-                <a href="#contact" class="block text-gray-700 hover:text-blue-600 font-medium py-2 border-b border-gray-100" data-i18n="nav_contact">اتصل بنا</a>
-                <a href="tel:+201000046215" class="btn-primary text-white w-full text-center py-3 rounded-full font-bold flex items-center justify-center gap-2" data-i18n="mobile_call"><i class="fas fa-phone-alt"></i> اتصل الآن</a>
-                <div class="flex items-center gap-2 pt-2 justify-center">
-                    <button id="lang-ar-mobile" class="lang-btn text-sm font-medium px-3 py-1 rounded-full border border-gray-300 bg-blue-600 text-white">AR</button>
-                    <button id="lang-en-mobile" class="lang-btn text-sm font-medium px-3 py-1 rounded-full border border-gray-300">EN</button>
+        <!-- القائمة الجانبية للموبايل -->
+        <div id="mobile-menu" class="md:hidden fixed top-0 right-0 h-full w-72 bg-white shadow-2xl z-50 overflow-y-auto">
+            <div class="p-6">
+                <button id="close-mobile-menu" class="absolute top-4 left-4 text-gray-500 hover:text-gray-700" aria-label="إغلاق القائمة">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+                <div class="mt-12 space-y-4">
+                    <a href="#home" class="block text-gray-700 hover:text-blue-600 font-medium py-2 border-b border-gray-100" data-i18n="nav_home">الرئيسية</a>
+                    <a href="#about" class="block text-gray-700 hover:text-blue-600 font-medium py-2 border-b border-gray-100" data-i18n="nav_about">من نحن</a>
+                    <a href="#services" class="block text-gray-700 hover:text-blue-600 font-medium py-2 border-b border-gray-100" data-i18n="nav_services">خدماتنا</a>
+                    <a href="#gallery" class="block text-gray-700 hover:text-blue-600 font-medium py-2 border-b border-gray-100" data-i18n="nav_gallery">معرض الأبواب</a>
+                    <a href="#supply" class="block text-gray-700 hover:text-blue-600 font-medium py-2 border-b border-gray-100" data-i18n="nav_supply">التوريدات</a>
+                    <a href="#testimonials" class="block text-gray-700 hover:text-blue-600 font-medium py-2 border-b border-gray-100" data-i18n="nav_testimonials">آراء العملاء</a>
+                    <a href="#contact" class="block text-gray-700 hover:text-blue-600 font-medium py-2 border-b border-gray-100" data-i18n="nav_contact">اتصل بنا</a>
+                    <a href="tel:+201000046215" class="btn-primary text-white w-full text-center py-3 rounded-full font-bold flex items-center justify-center gap-2" data-i18n="mobile_call">
+                        <i class="fas fa-phone-alt"></i> اتصل الآن
+                    </a>
+                    <div class="flex items-center gap-2 pt-2 justify-center">
+                        <button id="lang-ar-mobile" class="lang-btn text-sm font-medium px-3 py-1 rounded-full border border-gray-300 bg-blue-600 text-white">AR</button>
+                        <button id="lang-en-mobile" class="lang-btn text-sm font-medium px-3 py-1 rounded-full border border-gray-300">EN</button>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-gradient pt-24 md:pt-28 pb-16 md:pb-20 text-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-black/20"></div>
-        <div class="absolute top-10 left-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-        <div class="absolute bottom-10 right-10 w-96 h-96 bg-cyan-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid md:grid-cols-2 gap-10 items-center">
-                <div id="hero-text-container" class="text-center md:text-right">
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-6" data-i18n="hero_headline">أبواب أوتوماتيكية <br/>بأعلى معايير <span class="text-cyan-300">الجودة والسلامة</span></h2>
-                    <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-xl mx-auto md:mx-0" data-i18n="hero_subtext">صيانة دورية · فريق عمل 24 ساعة · توريد أبواب للمستشفيات والمولات والفنادق · قطع غيار جميع الموديلات</p>
-                    <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-                        <a href="https://wa.me/201000046215" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl flex items-center gap-2 transition-all" data-i18n="hero_whatsapp"><i class="fab fa-whatsapp text-2xl"></i> واتساب</a>
-                        <a href="https://www.facebook.com/SensorsAutoDoors" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl flex items-center gap-2 transition-all" data-i18n="hero_facebook"><i class="fab fa-facebook text-2xl"></i> فيسبوك</a>
-                    </div>
-                    <div class="mt-8 flex items-center justify-center md:justify-start gap-4 text-sm text-gray-300">
-                        <span data-i18n="hero_support1"><i class="fas fa-clock mr-1"></i> 24/7 دعم</span>
-                        <span class="w-1 h-1 bg-gray-400 rounded-full"></span>
-                        <span data-i18n="hero_support2"><i class="fas fa-shield-alt mr-1"></i> ضمان الجودة</span>
-                    </div>
-                </div>
-                <div class="flex justify-center md:justify-end">
-                    <img src="post.jpg" alt="أبواب أوتوماتيكية" class="rounded-2xl shadow-2xl max-h-80 md:max-h-96 object-cover border-4 border-white/20" data-i18n-alt="hero_image_alt" onerror="this.src='https://placehold.co/400x400/1e293b/white?text=Sensor+Doors'">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-16 md:py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <span class="text-blue-600 font-bold text-sm uppercase tracking-widest" data-i18n="about_title">من نحن</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2" data-i18n="about_heading">شركة سينسور الأندلس للأبواب الفتوسيل الأوتوماتيك</h2>
-                <p class="text-gray-600 mt-4 max-w-2xl mx-auto" data-i18n="about_description">خبرة واسعة في مجال الأبواب الأوتوماتيكية، نضمن لعملائنا أفضل الخدمات بجودة عالية وأسعار تنافسية.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8 text-center">
-                <div class="p-6 rounded-2xl bg-gray-50 hover:bg-blue-50 transition-all shadow-sm">
-                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl"><i class="fas fa-eye"></i></div>
-                    <h3 class="text-xl font-bold mb-2" data-i18n="about_vision_title">رؤيتنا</h3>
-                    <p class="text-gray-600" data-i18n="about_vision_desc">أن نكون الخيار الأول في جمهورية مصر العربية لحلول الأبواب الأوتوماتيكية الذكية والآمنة.</p>
-                </div>
-                <div class="p-6 rounded-2xl bg-gray-50 hover:bg-blue-50 transition-all shadow-sm">
-                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl"><i class="fas fa-bullseye"></i></div>
-                    <h3 class="text-xl font-bold mb-2" data-i18n="about_mission_title">رسالتنا</h3>
-                    <p class="text-gray-600" data-i18n="about_mission_desc">تقديم خدمات صيانة وتوريد متكاملة على مدار الساعة بأعلى معايير الاحترافية.</p>
-                </div>
-                <div class="p-6 rounded-2xl bg-gray-50 hover:bg-blue-50 transition-all shadow-sm">
-                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl"><i class="fas fa-handshake"></i></div>
-                    <h3 class="text-xl font-bold mb-2" data-i18n="about_values_title">قيمنا</h3>
-                    <p class="text-gray-600" data-i18n="about_values_desc">الالتزام، السرعة، الأمان، والشفافية في التعامل مع جميع العملاء.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <span class="text-blue-600 font-bold text-sm uppercase tracking-widest" data-i18n="services_title">خدماتنا</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2" data-i18n="services_heading">حلول متكاملة للأبواب الأوتوماتيكية</h2>
-            </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="service-card bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100">
-                    <div class="w-14 h-14 bg-gradient-to-br from-cyan-400 to-blue-500 text-white rounded-xl flex items-center justify-center text-2xl mb-5 shadow-lg"><i class="fas fa-tools"></i></div>
-                    <h3 class="text-xl font-bold mb-2" data-i18n="service1_title">صيانة دورية</h3>
-                    <p class="text-gray-600 text-sm" data-i18n="service1_desc">عقود صيانة شهرية / سنوية تشمل فحص شامل وضمان استمرارية العمل.</p>
-                </div>
-                <div class="service-card bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100">
-                    <div class="w-14 h-14 bg-gradient-to-br from-cyan-400 to-blue-500 text-white rounded-xl flex items-center justify-center text-2xl mb-5 shadow-lg"><i class="fas fa-users-cog"></i></div>
-                    <h3 class="text-xl font-bold mb-2" data-i18n="service2_title">فريق 24 ساعة</h3>
-                    <p class="text-gray-600 text-sm" data-i18n="service2_desc">فريق فني متخصص يعمل على مدار الساعة للاستجابة الطارئة وأعمال الصيانة.</p>
-                </div>
-                <div class="service-card bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100">
-                    <div class="w-14 h-14 bg-gradient-to-br from-cyan-400 to-blue-500 text-white rounded-xl flex items-center justify-center text-2xl mb-5 shadow-lg"><i class="fas fa-building"></i></div>
-                    <h3 class="text-xl font-bold mb-2" data-i18n="service3_title">توريدات أبواب</h3>
-                    <p class="text-gray-600 text-sm" data-i18n="service3_desc">توريد وتركيب أبواب أوتوماتيك للمستشفيات، المولات، الفنادق والمباني التجارية.</p>
-                </div>
-                <div class="service-card bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100">
-                    <div class="w-14 h-14 bg-gradient-to-br from-cyan-400 to-blue-500 text-white rounded-xl flex items-center justify-center text-2xl mb-5 shadow-lg"><i class="fas fa-cogs"></i></div>
-                    <h3 class="text-xl font-bold mb-2" data-i18n="service4_title">قطع غيار</h3>
-                    <p class="text-gray-600 text-sm" data-i18n="service4_desc">توفير قطع غيار أصلية لجميع موديلات الأبواب الأوتوماتيكية (فتوسيل وجميع الأنواع).</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Door Gallery Section -->
-    <section id="gallery" class="py-16 md:py-20 bg-gradient-to-b from-slate-900 to-slate-800 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <span class="text-cyan-400 font-bold text-sm uppercase tracking-widest" data-i18n="gallery_title">معرض تفاعلي</span>
-                <h2 class="text-3xl md:text-4xl font-bold mt-2" data-i18n="gallery_heading"> </h2>
-                <p class="text-gray-400 mt-4 max-w-2xl mx-auto" data-i18n="gallery_desc"> </p>
-            </div>
+    <main id="main-content">
+        <!-- ============ Hero Section ============ -->
+        <section id="home" class="hero-gradient pt-24 md:pt-28 pb-16 md:pb-20 text-white relative overflow-hidden" aria-label="القسم الرئيسي">
+            <div class="absolute inset-0 bg-black/20 parallax-layer" data-parallax="0.5"></div>
+            <div class="absolute top-10 left-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 parallax-layer" data-parallax="0.3"></div>
+            <div class="absolute bottom-10 right-10 w-96 h-96 bg-cyan-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 parallax-layer" data-parallax="0.7"></div>
             
-            <div class="grid sm:grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <!-- Door 1: Sensor Automatic Sliding Door (Realistic) -->
-                <div class="door-realistic-frame">
-                    <!-- هيكل الباب العلوي -->
-                    <div class="door-header">
-                        <span class="door-header-text">AUTOMATIC SLIDING DOOR</span>
-                        <div class="door-header-logo">
-                            <i class="fas fa-microchip"></i>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div id="hero-text-container" class="text-center md:text-right">
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-6" data-i18n="hero_headline">
+                            أبواب أوتوماتيكية <br/>بأعلى معايير <span class="text-cyan-300">الجودة والسلامة</span>
+                        </h2>
+                        <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-xl mx-auto md:mx-0" data-i18n="hero_subtext">
+                            صيانة دورية · فريق عمل 24 ساعة · توريد أبواب للمستشفيات والمولات والفنادق · قطع غيار جميع الموديلات
+                        </p>
+                        <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                            <a href="https://wa.me/201000046215" target="_blank" rel="noopener noreferrer" class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl flex items-center gap-2 transition-all" data-i18n="hero_whatsapp" aria-label="تواصل عبر واتساب">
+                                <i class="fab fa-whatsapp text-2xl" aria-hidden="true"></i> واتساب
+                            </a>
+                            <a href="https://www.facebook.com/SensorsAutoDoors" target="_blank" rel="noopener noreferrer" class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl flex items-center gap-2 transition-all" data-i18n="hero_facebook" aria-label="تابعنا على فيسبوك">
+                                <i class="fab fa-facebook text-2xl" aria-hidden="true"></i> فيسبوك
+                            </a>
+                        </div>
+                        <div class="mt-8 flex items-center justify-center md:justify-start gap-4 text-sm text-gray-300">
+                            <span data-i18n="hero_support1"><i class="fas fa-clock mr-1" aria-hidden="true"></i> 24/7 دعم</span>
+                            <span class="w-1 h-1 bg-gray-400 rounded-full" aria-hidden="true"></span>
+                            <span data-i18n="hero_support2"><i class="fas fa-shield-alt mr-1" aria-hidden="true"></i> ضمان الجودة</span>
                         </div>
                     </div>
-                    
-                    <!-- الإطارات الجانبية -->
-                    <div class="door-side-frame left"></div>
-                    <div class="door-side-frame right"></div>
-                    
-                    <!-- مستشعر الحركة -->
-                    <div class="motion-sensor"></div>
-                    
-                    <!-- ضوء LED -->
-                    <div class="led-indicator"></div>
-                    
-                    <!-- لوح الباب الأيسر -->
-                    <div class="door-glass-panel left-panel">
-                        <div class="door-handle left-handle"></div>
+                    <div class="flex justify-center md:justify-end">
+                        <img src="post.jpg" alt="أبواب أوتوماتيكية من سينسور" class="rounded-2xl shadow-2xl max-h-80 md:max-h-96 object-cover border-4 border-white/20" data-i18n-alt="hero_image_alt" onerror="this.src='https://placehold.co/400x400/1e293b/white?text=Sensor+Doors'" loading="eager" width="400" height="400">
                     </div>
-                    
-                    <!-- لوح الباب الأيمن -->
-                    <div class="door-glass-panel right-panel">
-                        <div class="door-handle right-handle"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ About Section ============ -->
+        <section id="about" class="py-16 md:py-20 bg-white" aria-label="من نحن">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <span class="text-blue-600 font-bold text-sm uppercase tracking-widest" data-i18n="about_title">من نحن</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2" data-i18n="about_heading">شركة سينسور الأندلس للأبواب الفتوسيل الأوتوماتيك</h2>
+                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto" data-i18n="about_description">خبرة واسعة في مجال الأبواب الأوتوماتيكية، نضمن لعملائنا أفضل الخدمات بجودة عالية وأسعار تنافسية.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="p-6 rounded-2xl bg-gray-50 hover:bg-blue-50 transition-all shadow-sm service-card">
+                        <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl" aria-hidden="true">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2" data-i18n="about_vision_title">رؤيتنا</h3>
+                        <p class="text-gray-600" data-i18n="about_vision_desc">أن نكون الخيار الأول في جمهورية مصر العربية لحلول الأبواب الأوتوماتيكية الذكية والآمنة.</p>
                     </div>
-                    
-                    <!-- إضاءة خلفية عند الفتح -->
-                    <div class="door-backlight"></div>
-                    
-                    <!-- شهادة CE -->
-                    <div class="ce-badge">
-                        <i class="fas fa-certificate mr-1"></i> CE CERTIFIED
+                    <div class="p-6 rounded-2xl bg-gray-50 hover:bg-blue-50 transition-all shadow-sm service-card">
+                        <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl" aria-hidden="true">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2" data-i18n="about_mission_title">رسالتنا</h3>
+                        <p class="text-gray-600" data-i18n="about_mission_desc">تقديم خدمات صيانة وتوريد متكاملة على مدار الساعة بأعلى معايير الاحترافية.</p>
                     </div>
-                    
-                    <!-- معلومات الضمان -->
-                    <div class="warranty-info">
-                        <i class="fas fa-shield-alt mr-2"></i> 36 MONTHS WARRANTY
+                    <div class="p-6 rounded-2xl bg-gray-50 hover:bg-blue-50 transition-all shadow-sm service-card">
+                        <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl" aria-hidden="true">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2" data-i18n="about_values_title">قيمنا</h3>
+                        <p class="text-gray-600" data-i18n="about_values_desc">الالتزام، السرعة، الأمان، والشفافية في التعامل مع جميع العملاء.</p>
                     </div>
-                    
-                    <!-- ملصق سينسور الأندلس -->
-                    <div class="sensor-label">
-                        <div class="sensor-label-main">SENSOR</div>
-                        <div class="sensor-label-sub">AL-ANDALOS AUTO DOORS</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ Services Section ============ -->
+        <section id="services" class="py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white" aria-label="خدماتنا">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <span class="text-blue-600 font-bold text-sm uppercase tracking-widest" data-i18n="services_title">خدماتنا</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2" data-i18n="services_heading">حلول متكاملة للأبواب الأوتوماتيكية</h2>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="service-card bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100">
+                        <div class="w-14 h-14 bg-gradient-to-br from-cyan-400 to-blue-500 text-white rounded-xl flex items-center justify-center text-2xl mb-5 shadow-lg" aria-hidden="true">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2" data-i18n="service1_title">صيانة دورية</h3>
+                        <p class="text-gray-600 text-sm" data-i18n="service1_desc">عقود صيانة شهرية / سنوية تشمل فحص شامل وضمان استمرارية العمل.</p>
                     </div>
-                    
-                    <!-- القاعدة السفلية -->
-                    <div class="door-bottom-rail">
-                        <span class="door-bottom-text">55W MOTOR | MAX 150kg | TUV APPROVED</span>
+                    <div class="service-card bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100">
+                        <div class="w-14 h-14 bg-gradient-to-br from-cyan-400 to-blue-500 text-white rounded-xl flex items-center justify-center text-2xl mb-5 shadow-lg" aria-hidden="true">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2" data-i18n="service2_title">فريق 24 ساعة</h3>
+                        <p class="text-gray-600 text-sm" data-i18n="service2_desc">فريق فني متخصص يعمل على مدار الساعة للاستجابة الطارئة وأعمال الصيانة.</p>
                     </div>
+                    <div class="service-card bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100">
+                        <div class="w-14 h-14 bg-gradient-to-br from-cyan-400 to-blue-500 text-white rounded-xl flex items-center justify-center text-2xl mb-5 shadow-lg" aria-hidden="true">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2" data-i18n="service3_title">توريدات أبواب</h3>
+                        <p class="text-gray-600 text-sm" data-i18n="service3_desc">توريد وتركيب أبواب أوتوماتيك للمستشفيات، المولات، الفنادق والمباني التجارية.</p>
+                    </div>
+                    <div class="service-card bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100">
+                        <div class="w-14 h-14 bg-gradient-to-br from-cyan-400 to-blue-500 text-white rounded-xl flex items-center justify-center text-2xl mb-5 shadow-lg" aria-hidden="true">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2" data-i18n="service4_title">قطع غيار</h3>
+                        <p class="text-gray-600 text-sm" data-i18n="service4_desc">توفير قطع غيار أصلية لجميع موديلات الأبواب الأوتوماتيكية (فتوسيل وجميع الأنواع).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ Interactive Door Gallery ============ -->
+        <section id="gallery" class="py-16 md:py-20 bg-gradient-to-b from-slate-900 to-slate-800 text-white" aria-label="معرض الأبواب التفاعلي">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <span class="text-cyan-400 font-bold text-sm uppercase tracking-widest" data-i18n="gallery_title">معرض تفاعلي</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mt-2" data-i18n="gallery_heading">مرر المؤشر لترى الأبواب تفتح</h2>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto" data-i18n="gallery_desc">تشكيلة واسعة من الأبواب الأوتوماتيكية المنزلقة بأنواعها المتعددة</p>
                 </div>
                 
-                <!-- Door 2: Hospital Hermetic Door -->
-                <div class="door-realistic-frame" style="background: linear-gradient(180deg, #0a1929 0%, #173a5e 50%, #1a5276 100%);">
-                    <div class="door-header" style="border-bottom-color: #00ff88;">
-                        <span class="door-header-text">HERMETIC HOSPITAL DOOR</span>
-                        <div class="door-header-logo" style="color: #00ff88;">
-                            <i class="fas fa-hospital"></i>
+                <div class="grid sm:grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <!-- الباب الأول -->
+                    <div class="door-realistic-frame gallery-image" data-full="post.jpg" role="button" tabindex="0" aria-label="باب أوتوماتيكي منزلق - اضغط للتكبير">
+                        <div class="door-header">
+                            <span class="door-header-text">AUTOMATIC SLIDING DOOR</span>
+                            <div class="door-header-logo"><i class="fas fa-microchip"></i></div>
+                        </div>
+                        <div class="door-side-frame left"></div>
+                        <div class="door-side-frame right"></div>
+                        <div class="motion-sensor"></div>
+                        <div class="led-indicator"></div>
+                        <div class="door-glass-panel left-panel">
+                            <div class="door-handle left-handle"></div>
+                        </div>
+                        <div class="door-glass-panel right-panel">
+                            <div class="door-handle right-handle"></div>
+                        </div>
+                        <div class="door-backlight"></div>
+                        <div class="ce-badge"><i class="fas fa-certificate mr-1"></i> CE CERTIFIED</div>
+                        <div class="warranty-info"><i class="fas fa-shield-alt mr-2"></i> 36 MONTHS WARRANTY</div>
+                        <div class="sensor-label">
+                            <div class="sensor-label-main">SENSOR</div>
+                            <div class="sensor-label-sub">AL-ANDALOS AUTO DOORS</div>
+                        </div>
+                        <div class="door-bottom-rail">
+                            <span class="door-bottom-text">55W MOTOR | MAX 150kg | TUV APPROVED</span>
                         </div>
                     </div>
                     
-                    <div class="door-side-frame left"></div>
-                    <div class="door-side-frame right"></div>
-                    
-                    <div class="motion-sensor" style="background: radial-gradient(circle, #00ff88, #00b34e);"></div>
-                    <div class="led-indicator" style="background: #00ff88; box-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88;"></div>
-                    
-                    <div class="door-glass-panel left-panel" style="background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02)); border-color: rgba(0,255,136,0.2);">
-                        <div class="door-handle left-handle"></div>
-                    </div>
-                    
-                    <div class="door-glass-panel right-panel" style="background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02)); border-color: rgba(0,255,136,0.2);">
-                        <div class="door-handle right-handle"></div>
-                    </div>
-                    
-                    <div class="door-backlight" style="background: radial-gradient(ellipse, rgba(0,255,136,0.15), transparent);"></div>
-                    
-                    <div class="ce-badge" style="background: rgba(0,255,136,0.9);">
-                        <i class="fas fa-certificate mr-1"></i> MEDICAL GRADE
-                    </div>
-                    
-                    <div class="warranty-info">
-                        <i class="fas fa-shield-alt mr-2"></i> ANTIBACTERIAL SEALED
-                    </div>
-                    
-                    <div class="sensor-label">
-                        <div class="sensor-label-main" style="color: #00ff88;">SENSOR</div>
-                        <div class="sensor-label-sub">AL-ANDALOS AUTO DOORS</div>
-                    </div>
-                    
-                    <div class="door-bottom-rail" style="border-top-color: #00ff88;">
-                        <span class="door-bottom-text" style="color: #00ff88;">HERMETIC SEAL | STERILE ENVIRONMENT</span>
+                    <!-- الباب الثاني -->
+                    <div class="door-realistic-frame gallery-image" data-full="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800" style="background: linear-gradient(180deg, #0a1929 0%, #173a5e 50%, #1a5276 100%);" role="button" tabindex="0" aria-label="باب أوتوماتيكي للمستشفيات - اضغط للتكبير">
+                        <div class="door-header" style="border-bottom-color: #00ff88;">
+                            <span class="door-header-text">HERMETIC HOSPITAL DOOR</span>
+                            <div class="door-header-logo" style="color: #00ff88;"><i class="fas fa-hospital"></i></div>
+                        </div>
+                        <div class="door-side-frame left"></div>
+                        <div class="door-side-frame right"></div>
+                        <div class="motion-sensor" style="background: radial-gradient(circle, #00ff88, #00b34e);"></div>
+                        <div class="led-indicator" style="background: #00ff88; box-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88;"></div>
+                        <div class="door-glass-panel left-panel" style="background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02)); border-color: rgba(0,255,136,0.2);">
+                            <div class="door-handle left-handle"></div>
+                        </div>
+                        <div class="door-glass-panel right-panel" style="background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02)); border-color: rgba(0,255,136,0.2);">
+                            <div class="door-handle right-handle"></div>
+                        </div>
+                        <div class="door-backlight" style="background: radial-gradient(ellipse, rgba(0,255,136,0.15), transparent);"></div>
+                        <div class="ce-badge" style="background: rgba(0,255,136,0.9);"><i class="fas fa-certificate mr-1"></i> MEDICAL GRADE</div>
+                        <div class="warranty-info"><i class="fas fa-shield-alt mr-2"></i> ANTIBACTERIAL SEALED</div>
+                        <div class="sensor-label">
+                            <div class="sensor-label-main" style="color: #00ff88;">SENSOR</div>
+                            <div class="sensor-label-sub">AL-ANDALOS AUTO DOORS</div>
+                        </div>
+                        <div class="door-bottom-rail" style="border-top-color: #00ff88;">
+                            <span class="door-bottom-text" style="color: #00ff88;">HERMETIC SEAL | STERILE ENVIRONMENT</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Supply Section -->
-    <section id="supply" class="py-16 md:py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <span class="text-blue-600 font-bold text-sm uppercase tracking-widest" data-i18n="supply_title">توريدات متخصصة</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2" data-i18n="supply_heading">نخدم قطاعات حيوية</h2>
-                <p class="text-gray-600 mt-4" data-i18n="supply_desc">نوفر أبوابا أوتوماتيكية عالية الجودة تناسب احتياجات المنشآت المختلفة.</p>
+        <!-- ============ Supply Section ============ -->
+        <section id="supply" class="py-16 md:py-20 bg-white" aria-label="التوريدات المتخصصة">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <span class="text-blue-600 font-bold text-sm uppercase tracking-widest" data-i18n="supply_title">توريدات متخصصة</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2" data-i18n="supply_heading">نخدم قطاعات حيوية</h2>
+                    <p class="text-gray-600 mt-4" data-i18n="supply_desc">نوفر أبوابا أوتوماتيكية عالية الجودة تناسب احتياجات المنشآت المختلفة.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="relative group overflow-hidden rounded-2xl shadow-lg h-64 gallery-image" data-full="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800" role="button" tabindex="0" aria-label="أبواب المستشفيات - اضغط للتكبير">
+                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="مستشفيات" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 text-white">
+                            <h3 class="text-2xl font-bold" data-i18n="supply_hospital_title">المستشفيات</h3>
+                            <p class="text-sm opacity-90" data-i18n="supply_hospital_desc">أبواب بمعايير طبية صارمة، سهلة التعقيم ومضادة للبكتيريا.</p>
+                        </div>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-2xl shadow-lg h-64 gallery-image" data-full="mall.jpg" role="button" tabindex="0" aria-label="أبواب المولات - اضغط للتكبير">
+                        <img src="mall.jpg" alt="مولات" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 text-white">
+                            <h3 class="text-2xl font-bold" data-i18n="supply_mall_title">المولات التجارية</h3>
+                            <p class="text-sm opacity-90" data-i18n="supply_mall_desc">أبواب زجاجية أوتوماتيك بتصاميم عصرية تتحمل الحركة الكثيفة.</p>
+                        </div>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-2xl shadow-lg h-64 gallery-image" data-full="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800" role="button" tabindex="0" aria-label="أبواب الفنادق - اضغط للتكبير">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="فنادق" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 text-white">
+                            <h3 class="text-2xl font-bold" data-i18n="supply_hotel_title">الفنادق</h3>
+                            <p class="text-sm opacity-90" data-i18n="supply_hotel_desc">مداخل فندقية فخمة بأبواب أوتوماتيكية تعزز تجربة الضيوف.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="relative group overflow-hidden rounded-2xl shadow-lg h-64">
-                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="مستشفيات" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 text-white">
-                        <h3 class="text-2xl font-bold" data-i18n="supply_hospital_title">المستشفيات</h3>
-                        <p class="text-sm opacity-90" data-i18n="supply_hospital_desc">أبواب بمعايير طبية صارمة، سهلة التعقيم ومضادة للبكتيريا.</p>
-                    </div>
-                </div>
-                <div class="relative group overflow-hidden rounded-2xl shadow-lg h-64">
-                    <img src="mall.jpg" alt="مولات" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 text-white">
-                        <h3 class="text-2xl font-bold" data-i18n="supply_mall_title">المولات التجارية</h3>
-                        <p class="text-sm opacity-90" data-i18n="supply_mall_desc">أبواب زجاجية أوتوماتيك بتصاميم عصرية تتحمل الحركة الكثيفة.</p>
-                    </div>
-                </div>
-                <div class="relative group overflow-hidden rounded-2xl shadow-lg h-64">
-                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="فنادق" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 text-white">
-                        <h3 class="text-2xl font-bold" data-i18n="supply_hotel_title">الفنادق</h3>
-                        <p class="text-sm opacity-90" data-i18n="supply_hotel_desc">مداخل فندقية فخمة بأبواب أوتوماتيكية تعزز تجربة الضيوف.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Why Choose Us -->
-    <section class="py-16 bg-gradient-to-r from-blue-700 to-cyan-600 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6" data-i18n="why_title">لماذا تختار سينسور؟</h2>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
-                <div>
-                    <i class="fas fa-clock text-4xl mb-3"></i>
-                    <div class="text-3xl font-extrabold">24/7</div>
-                    <p class="text-blue-100 mt-1" data-i18n="why_stat1_label">دعم فني متواصل</p>
-                </div>
-                <div>
-                    <i class="fas fa-certificate text-4xl mb-3"></i>
-                    <div class="text-3xl font-extrabold">+500</div>
-                    <p class="text-blue-100 mt-1" data-i18n="why_stat2_label">مشروع منجز</p>
-                </div>
-                <div>
-                    <i class="fas fa-users text-4xl mb-3"></i>
-                    <div class="text-3xl font-extrabold">+15</div>
-                    <p class="text-blue-100 mt-1" data-i18n="why_stat3_label">عامًا من الخبرة</p>
-                </div>
-                <div>
-                    <i class="fas fa-thumbs-up text-4xl mb-3"></i>
-                    <div class="text-3xl font-extrabold">100%</div>
-                    <p class="text-blue-100 mt-1" data-i18n="why_stat4_label">رضا العملاء</p>
+        <!-- ============ Why Choose Us ============ -->
+        <section class="py-16 bg-gradient-to-r from-blue-700 to-cyan-600 text-white" aria-label="لماذا تختار سينسور">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6" data-i18n="why_title">لماذا تختار سينسور؟</h2>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
+                    <div>
+                        <i class="fas fa-clock text-4xl mb-3" aria-hidden="true"></i>
+                        <div class="text-3xl font-extrabold">24/7</div>
+                        <p class="text-blue-100 mt-1" data-i18n="why_stat1_label">دعم فني متواصل</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-certificate text-4xl mb-3" aria-hidden="true"></i>
+                        <div class="text-3xl font-extrabold counter" data-target="500">0</div>
+                        <p class="text-blue-100 mt-1" data-i18n="why_stat2_label">مشروع منجز</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-users text-4xl mb-3" aria-hidden="true"></i>
+                        <div class="text-3xl font-extrabold counter" data-target="15">0</div>
+                        <p class="text-blue-100 mt-1" data-i18n="why_stat3_label">عامًا من الخبرة</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-thumbs-up text-4xl mb-3" aria-hidden="true"></i>
+                        <div class="text-3xl font-extrabold">100%</div>
+                        <p class="text-blue-100 mt-1" data-i18n="why_stat4_label">رضا العملاء</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 md:py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-10 items-start">
-                <div>
-                    <span class="text-blue-600 font-bold text-sm uppercase tracking-widest" data-i18n="contact_title">تواصل معنا</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-6" data-i18n="contact_heading">نحن في انتظار استفسارك</h2>
-                    <p class="text-gray-600 mb-8" data-i18n="contact_text">سواء كنت بحاجة إلى صيانة عاجلة، توريد أبواب جديدة، أو استشارة فنية، فريقنا جاهز للرد عليك فوراً.</p>
-                    <div class="space-y-6">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-xl"><i class="fas fa-phone-alt"></i></div>
+        <!-- ============ Testimonials Section ============ -->
+        <section id="testimonials" class="py-16 md:py-20 bg-gray-50" aria-label="آراء العملاء">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <span class="text-blue-600 font-bold text-sm uppercase tracking-widest" data-i18n="testimonials_title">آراء العملاء</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2" data-i18n="testimonials_heading">ماذا يقول عملاؤنا عنا</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="testimonial-card">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 mb-4">"خدمة ممتازة وسريعة، ركبوا لنا أبواب أوتوماتيكية في المستشفى بكفاءة عالية. أنصح بهم بشدة."</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center font-bold text-blue-600">أ.د</div>
                             <div>
-                                <p class="font-bold text-gray-800" data-i18n="contact_phone_label">اتصل بنا</p>
-                                <p class="text-gray-600 dir-ltr text-left" data-i18n="contact_phone">01000046215</p>
+                                <p class="font-bold text-gray-800">د. أحمد محمد</p>
+                                <p class="text-sm text-gray-500">مدير مستشفى السلام</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center text-xl"><i class="fab fa-whatsapp"></i></div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 mb-4">"فريق الصيانة متاح 24 ساعة، وعقود الصيانة عندهم ممتازة. الأبواب شغالة بكفاءة من سنتين بدون مشاكل."</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center font-bold text-green-600">م.س</div>
                             <div>
-                                <p class="font-bold text-gray-800" data-i18n="contact_whatsapp_label">واتساب</p>
-                                <p class="text-gray-600 dir-ltr text-left" data-i18n="contact_whatsapp">01000046215</p>
+                                <p class="font-bold text-gray-800">م. سارة علي</p>
+                                <p class="text-sm text-gray-500">مديرة مول النخيل</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-cyan-100 text-cyan-600 rounded-xl flex items-center justify-center text-xl"><i class="fas fa-envelope"></i></div>
-                            <div>
-                                <p class="font-bold text-gray-800" data-i18n="contact_email_label">البريد الإلكتروني</p>
-                                <p class="text-gray-600" data-i18n="contact_email">info@sensor-doors.eg</p>
-                            </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
                         </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-xl"><i class="fas fa-map-marker-alt"></i></div>
+                        <p class="text-gray-600 mb-4">"أسعار منافسة وجودة عالية في توريد الأبواب للفندق. المظهر فخم والتركيب احترافي."</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center font-bold text-purple-600">ك.ح</div>
                             <div>
-                                <p class="font-bold text-gray-800" data-i18n="contact_address_label">موقعنا</p>
-                                <p class="text-gray-600" data-i18n="contact_address">٤٧٧ شارع الصفا متفرع من جسر السويس امام محطة مترو عمر ابن الخطاب</p>
+                                <p class="font-bold text-gray-800">أ. كريم حسن</p>
+                                <p class="text-sm text-gray-500">مالك فندق جراند بلازا</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- ============ فورم الاتصال المحسن ============ -->
-                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-gray-100">
-                    <h3 class="text-2xl font-bold mb-6 text-gray-800" data-i18n="form_title">أرسل رسالة</h3>
-                    
-                    <!-- Formspree + واتساب -->
-                    <form id="contactForm" action="https://formspree.io/f/xrernlnv" method="POST" class="space-y-5">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="form_name_label">الاسم الكامل</label>
-                            <input type="text" name="fullName" required data-i18n-placeholder="form_name_placeholder" placeholder="أدخل اسمك" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="form_phone_label">رقم الجوال</label>
-                            <input type="tel" name="phone" required data-i18n-placeholder="form_phone_placeholder" placeholder="01xxxxxxxx" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="form_service_label">نوع الخدمة</label>
-                            <select id="form-service-select" name="service" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
-                                <option value="صيانة دورية">صيانة دورية</option>
-                                <option value="توريد أبواب">توريد أبواب</option>
-                                <option value="قطع غيار">قطع غيار</option>
-                                <option value="استشارة فنية">استشارة فنية</option>
-                                <option value="أخرى">أخرى</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="form_message_label">الرسالة</label>
-                            <textarea name="message" rows="4" required data-i18n-placeholder="form_message_placeholder" placeholder="اكتب تفاصيل طلبك..." class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"></textarea>
+            </div>
+        </section>
+
+        <!-- ============ Contact Section ============ -->
+        <section id="contact" class="py-16 md:py-20 bg-white" aria-label="اتصل بنا">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 gap-10 items-start">
+                    <div>
+                        <span class="text-blue-600 font-bold text-sm uppercase tracking-widest" data-i18n="contact_title">تواصل معنا</span>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-6" data-i18n="contact_heading">نحن في انتظار استفسارك</h2>
+                        <p class="text-gray-600 mb-8" data-i18n="contact_text">سواء كنت بحاجة إلى صيانة عاجلة، توريد أبواب جديدة، أو استشارة فنية، فريقنا جاهز للرد عليك فوراً.</p>
+                        
+                        <!-- خريطة جوجل -->
+                        <div class="mb-8 rounded-2xl overflow-hidden shadow-lg">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.783725175556!2d31.30775731511549!3d30.059805581882135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583e45b54b44a7%3A0x1b4a5c5a5b5a5b5a!2sOmar%20Ibn%20Al-Khattab%20Metro%20Station!5e0!3m2!1sar!2seg!4v1620000000000!5m2!1sar!2seg" 
+                                    width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="موقع سينسور على الخريطة">
+                            </iframe>
                         </div>
                         
-                        <!-- زري الإرسال -->
-                        <div class="flex flex-col sm:flex-row gap-3">
-                            <button type="submit" class="btn-primary flex-1 text-white font-bold py-3 rounded-xl shadow-lg flex items-center justify-center gap-2" data-i18n="form_submit">
-                                <i class="fas fa-paper-plane"></i> إرسال الطلب
-                            </button>
-                            <button type="button" id="whatsappSubmitBtn" class="bg-green-500 hover:bg-green-600 flex-1 text-white font-bold py-3 rounded-xl shadow-lg flex items-center justify-center gap-2 transition">
-                                <i class="fab fa-whatsapp"></i> واتساب
-                            </button>
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-xl" aria-hidden="true">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-gray-800" data-i18n="contact_phone_label">اتصل بنا</p>
+                                    <p class="text-gray-600 dir-ltr text-left" data-i18n="contact_phone">01000046215</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center text-xl" aria-hidden="true">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-gray-800" data-i18n="contact_whatsapp_label">واتساب</p>
+                                    <p class="text-gray-600 dir-ltr text-left" data-i18n="contact_whatsapp">01000046215</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-cyan-100 text-cyan-600 rounded-xl flex items-center justify-center text-xl" aria-hidden="true">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-gray-800" data-i18n="contact_email_label">البريد الإلكتروني</p>
+                                    <p class="text-gray-600" data-i18n="contact_email">info@sensor-doors.eg</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-xl" aria-hidden="true">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-gray-800" data-i18n="contact_address_label">موقعنا</p>
+                                    <p class="text-gray-600" data-i18n="contact_address">٤٧٧ شارع الصفا متفرع من جسر السويس امام محطة مترو عمر ابن الخطاب</p>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    
+                    <!-- نموذج الاتصال -->
+                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-gray-100">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800" data-i18n="form_title">أرسل رسالة</h3>
                         
-                        <!-- رسالة نجاح/فشل -->
-                        <div id="formSuccess" class="hidden bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-xl text-sm text-center">
-                            ✅ تم الإرسال بنجاح! سنتواصل معك قريباً.
-                        </div>
-                        <div id="formError" class="hidden bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm text-center">
-                            ❌ حدث خطأ. جرب واتساب.
-                        </div>
-                    </form>
+                        <form id="contactForm" action="https://formspree.io/f/xrernlnv" method="POST" class="space-y-5" novalidate>
+                            <!-- حماية من البوتات -->
+                            <input type="text" name="_honey" style="display:none">
+                            <input type="hidden" name="_subject" value="طلب خدمة جديد من موقع سينسور">
+                            
+                            <div>
+                                <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1" data-i18n="form_name_label">الاسم الكامل</label>
+                                <input type="text" id="fullName" name="fullName" required data-i18n-placeholder="form_name_placeholder" placeholder="أدخل اسمك" 
+                                       class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                       aria-required="true">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1" data-i18n="form_phone_label">رقم الجوال</label>
+                                <input type="tel" id="phone" name="phone" required data-i18n-placeholder="form_phone_placeholder" placeholder="01xxxxxxxx" 
+                                       class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                       aria-required="true" pattern="[0-9]{10,15}">
+                            </div>
+                            <div>
+                                <label for="form-service-select" class="block text-sm font-medium text-gray-700 mb-1" data-i18n="form_service_label">نوع الخدمة</label>
+                                <select id="form-service-select" name="service" required 
+                                        class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                        aria-required="true">
+                                    <option value="صيانة دورية">صيانة دورية</option>
+                                    <option value="توريد أبواب">توريد أبواب</option>
+                                    <option value="قطع غيار">قطع غيار</option>
+                                    <option value="استشارة فنية">استشارة فنية</option>
+                                    <option value="أخرى">أخرى</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1" data-i18n="form_message_label">الرسالة</label>
+                                <textarea id="message" name="message" rows="4" required data-i18n-placeholder="form_message_placeholder" placeholder="اكتب تفاصيل طلبك..." 
+                                          class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                          aria-required="true"></textarea>
+                            </div>
+                            
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <button type="submit" class="btn-primary flex-1 text-white font-bold py-3 rounded-xl shadow-lg flex items-center justify-center gap-2" data-i18n="form_submit">
+                                    <i class="fas fa-paper-plane" aria-hidden="true"></i> إرسال الطلب
+                                </button>
+                                <button type="button" id="whatsappSubmitBtn" class="bg-green-500 hover:bg-green-600 flex-1 text-white font-bold py-3 rounded-xl shadow-lg flex items-center justify-center gap-2 transition">
+                                    <i class="fab fa-whatsapp" aria-hidden="true"></i> واتساب
+                                </button>
+                            </div>
+                            
+                            <div id="formSuccess" class="hidden bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-xl text-sm text-center" role="alert">
+                                ✅ تم الإرسال بنجاح! سنتواصل معك قريباً.
+                            </div>
+                            <div id="formError" class="hidden bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm text-center" role="alert">
+                                ❌ حدث خطأ. جرب واتساب.
+                            </div>
+                            <div id="formLoading" class="hidden text-center py-2" role="status">
+                                <div class="inline-block w-6 h-6 border-3 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                                <span class="sr-only">جاري الإرسال...</span>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 pt-12 pb-6">
+    <!-- ============ Footer ============ -->
+    <footer class="bg-gray-900 text-gray-300 pt-12 pb-6" role="contentinfo">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-3 gap-8 mb-8">
                 <div>
                     <div class="flex items-center gap-2 mb-4">
-                        <div class="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center"><i class="fas fa-door-open text-white"></i></div>
+                        <div class="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center" aria-hidden="true">
+                            <i class="fas fa-door-open text-white"></i>
+                        </div>
                         <span class="text-white font-bold text-lg" data-i18n="logo_text">سينسور</span>
                     </div>
                     <p class="text-sm" data-i18n="footer_desc">شركة رائدة في الأبواب الأوتوماتيكية (فتوسيل) – صيانة، توريد، قطع غيار لجميع القطاعات.</p>
@@ -768,28 +1064,45 @@
                 <div>
                     <h4 class="text-white font-bold mb-4" data-i18n="footer_follow">تابعنا</h4>
                     <div class="flex gap-4 text-xl">
-                        <a href="https://www.facebook.com/SensorsAutoDoors" target="_blank" class="hover:text-cyan-400 transition"><i class="fab fa-facebook"></i></a>
-                        <!--<a href="#" class="hover:text-cyan-400 transition"><i class="fab fa-instagram"></i></a>-->
-                        <a href="https://wa.me/201000046215" class="hover:text-cyan-400 transition"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/SensorsAutoDoors" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition" aria-label="فيسبوك">
+                            <i class="fab fa-facebook" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://wa.me/201000046215" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition" aria-label="واتساب">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="border-t border-gray-700 pt-6 text-center text-sm">
                 <p data-i18n="footer_copyright">© 2026 شركة سينسور الأندلس للأبواب الفتوسيل الأوتوماتيك. جميع الحقوق محفوظة.</p>
-                <p>Designed by <a href="https://deve10per.vercel.app" class="hover:text-cyan-400 transition">Mr.Developer</a></p>
+                <p>Designed by <a href="https://me-one-blue.vercel.app/about.html" class="hover:text-cyan-400 transition">Mr.Developer</a></p>
             </div>
-            
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/201000046215" target="_blank" id="whatsapp-float" class="whatsapp-float" data-i18n-title="whatsapp_float_title" title="تواصل عبر واتساب">
-        <i class="fab fa-whatsapp"></i>
+    <!-- ============ WhatsApp Floating Button ============ -->
+    <a href="https://wa.me/201000046215" target="_blank" rel="noopener noreferrer" id="whatsapp-float" class="whatsapp-float" data-i18n-title="whatsapp_float_title" title="تواصل عبر واتساب" aria-label="تواصل عبر واتساب">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
-    <!-- Multilingual Script + Form Handler -->
+    <!-- ============ Lightbox ============ -->
+    <div id="lightbox" class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="عارض الصور">
+        <button id="lightbox-close" class="absolute top-4 right-4 text-white text-3xl hover:text-gray-300 z-10" aria-label="إغلاق">
+            <i class="fas fa-times"></i>
+        </button>
+        <button id="lightbox-prev" class="absolute left-4 text-white text-3xl hover:text-gray-300 z-10" aria-label="الصورة السابقة">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button id="lightbox-next" class="absolute right-4 text-white text-3xl hover:text-gray-300 z-10" aria-label="الصورة التالية">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <img id="lightbox-image" src="" alt="" class="max-w-4xl">
+    </div>
+
+    <!-- ============ Multilingual Script + All Functionality ============ -->
     <script>
         (function() {
+            // ============ الترجمات ============
             const translations = {
                 ar: {
                     title: "سينسور - أبواب أوتوماتيكية",
@@ -801,6 +1114,7 @@
                     nav_services: "خدماتنا",
                     nav_gallery: "معرض الأبواب",
                     nav_supply: "التوريدات",
+                    nav_testimonials: "آراء العملاء",
                     nav_contact: "اتصل بنا",
                     nav_phone: '<i class="fas fa-phone-alt"></i> 01000046215',
                     mobile_call: '<i class="fas fa-phone-alt"></i> اتصل الآن',
@@ -810,7 +1124,7 @@
                     hero_facebook: '<i class="fab fa-facebook text-2xl"></i> فيسبوك',
                     hero_support1: '<i class="fas fa-clock mr-1"></i> 24/7 دعم',
                     hero_support2: '<i class="fas fa-shield-alt mr-1"></i> ضمان الجودة',
-                    hero_image_alt: "أبواب أوتوماتيكية",
+                    hero_image_alt: "أبواب أوتوماتيكية من سينسور",
                     about_title: "من نحن",
                     about_heading: "شركة سينسور الأندلس للأبواب الفتوسيل الأوتوماتيك",
                     about_description: "خبرة واسعة في مجال الأبواب الأوتوماتيكية، نضمن لعملائنا أفضل الخدمات بجودة عالية وأسعار تنافسية.",
@@ -842,6 +1156,8 @@
                     supply_mall_desc: "أبواب زجاجية أوتوماتيك بتصاميم عصرية تتحمل الحركة الكثيفة.",
                     supply_hotel_title: "الفنادق",
                     supply_hotel_desc: "مداخل فندقية فخمة بأبواب أوتوماتيكية تعزز تجربة الضيوف.",
+                    testimonials_title: "آراء العملاء",
+                    testimonials_heading: "ماذا يقول عملاؤنا عنا",
                     why_title: "لماذا تختار سينسور؟",
                     why_stat1_label: "دعم فني متواصل",
                     why_stat2_label: "مشروع منجز",
@@ -884,6 +1200,7 @@
                     nav_services: "Services",
                     nav_gallery: "Door Gallery",
                     nav_supply: "Supply",
+                    nav_testimonials: "Testimonials",
                     nav_contact: "Contact",
                     nav_phone: '<i class="fas fa-phone-alt"></i> 01000046215',
                     mobile_call: '<i class="fas fa-phone-alt"></i> Call Now',
@@ -893,7 +1210,7 @@
                     hero_facebook: '<i class="fab fa-facebook text-2xl"></i> Facebook',
                     hero_support1: '<i class="fas fa-clock mr-1"></i> 24/7 Support',
                     hero_support2: '<i class="fas fa-shield-alt mr-1"></i> Quality Guarantee',
-                    hero_image_alt: "Automatic Doors",
+                    hero_image_alt: "Sensor Automatic Doors",
                     about_title: "About Us",
                     about_heading: "Sensor Al-Andalos Automatic Doors Company",
                     about_description: "Extensive experience in automatic doors, ensuring our customers the best services with high quality and competitive prices.",
@@ -925,6 +1242,8 @@
                     supply_mall_desc: "Modern automatic glass doors that withstand high traffic.",
                     supply_hotel_title: "Hotels",
                     supply_hotel_desc: "Luxurious hotel entrances with automatic doors that enhance the guest experience.",
+                    testimonials_title: "Testimonials",
+                    testimonials_heading: "What Our Clients Say",
                     why_title: "Why Choose Sensor?",
                     why_stat1_label: "Continuous Support",
                     why_stat2_label: "Completed Projects",
@@ -959,6 +1278,7 @@
                 }
             };
 
+            // ============ متغيرات عامة ============
             const htmlElement = document.documentElement;
             const metaDescription = document.querySelector('meta[name="description"]');
             const heroTextContainer = document.getElementById('hero-text-container');
@@ -966,8 +1286,14 @@
             const whatsappFloat = document.getElementById('whatsapp-float');
             const formServiceSelect = document.getElementById('form-service-select');
             const langButtons = document.querySelectorAll('.lang-btn');
+            
+            let currentLang = 'ar';
+            let lightboxImages = [];
+            let currentImageIndex = 0;
 
+            // ============ تطبيق اللغة ============
             function applyLanguage(lang) {
+                currentLang = lang;
                 localStorage.setItem('sensor-lang', lang);
                 htmlElement.lang = lang;
                 htmlElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
@@ -1012,43 +1338,27 @@
                 }
 
                 if (heroTextContainer) {
-                    if (lang === 'ar') {
-                        heroTextContainer.classList.add('md:text-right');
-                        heroTextContainer.classList.remove('md:text-left');
-                    } else {
-                        heroTextContainer.classList.add('md:text-left');
-                        heroTextContainer.classList.remove('md:text-right');
-                    }
+                    heroTextContainer.classList.toggle('md:text-right', lang === 'ar');
+                    heroTextContainer.classList.toggle('md:text-left', lang === 'en');
                 }
 
                 if (navLinksDesktop) {
-                    if (lang === 'ar') {
-                        navLinksDesktop.classList.add('space-x-reverse');
-                    } else {
-                        navLinksDesktop.classList.remove('space-x-reverse');
-                    }
+                    navLinksDesktop.classList.toggle('space-x-reverse', lang === 'ar');
                 }
 
                 if (whatsappFloat) {
-                    if (lang === 'ar') {
-                        whatsappFloat.style.left = '30px';
-                        whatsappFloat.style.right = 'auto';
-                    } else {
-                        whatsappFloat.style.right = '30px';
-                        whatsappFloat.style.left = 'auto';
-                    }
+                    whatsappFloat.style.left = lang === 'ar' ? '30px' : 'auto';
+                    whatsappFloat.style.right = lang === 'en' ? '30px' : 'auto';
                 }
 
                 langButtons.forEach(btn => {
                     const btnLang = btn.id.includes('ar') ? 'ar' : 'en';
-                    if (btnLang === lang) {
-                        btn.classList.add('active');
-                    } else {
-                        btn.classList.remove('active');
-                    }
+                    btn.classList.toggle('active', btnLang === lang);
+                    btn.setAttribute('aria-pressed', btnLang === lang);
                 });
             }
 
+            // ============ أحداث اللغة ============
             document.getElementById('lang-ar').addEventListener('click', () => applyLanguage('ar'));
             document.getElementById('lang-en').addEventListener('click', () => applyLanguage('en'));
             document.getElementById('lang-ar-mobile').addEventListener('click', () => applyLanguage('ar'));
@@ -1057,41 +1367,174 @@
             const savedLang = localStorage.getItem('sensor-lang') || 'ar';
             applyLanguage(savedLang);
 
-            const btn = document.getElementById('mobile-menu-btn');
-            const menu = document.getElementById('mobile-menu');
-            btn.addEventListener('click', () => {
-                menu.classList.toggle('hidden');
-            });
+            // ============ القائمة الجانبية للموبايل ============
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileMenu = document.getElementById('close-mobile-menu');
+            
+            function openMobileMenu() {
+                mobileMenu.classList.add('show');
+                mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function closeMobileMenuFn() {
+                mobileMenu.classList.remove('show');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+            
+            mobileMenuBtn.addEventListener('click', openMobileMenu);
+            closeMobileMenu.addEventListener('click', closeMobileMenuFn);
+            
             document.querySelectorAll('#mobile-menu a').forEach(link => {
-                link.addEventListener('click', () => {
-                    menu.classList.add('hidden');
-                });
+                link.addEventListener('click', closeMobileMenuFn);
             });
 
-            // ============ نظام إرسال الفورم ============
+            // ============ تأثير Parallax ============
+            function handleParallax() {
+                const layers = document.querySelectorAll('.parallax-layer');
+                const scrolled = window.pageYOffset;
+                
+                layers.forEach(layer => {
+                    const speed = parseFloat(layer.getAttribute('data-parallax')) || 0.5;
+                    const yPos = scrolled * speed;
+                    layer.style.transform = `translateY(${yPos}px)`;
+                });
+            }
             
-            // إرسال إلى واتساب
+            window.addEventListener('scroll', handleParallax, { passive: true });
+
+            // ============ Lightbox ============
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const lightboxPrev = document.getElementById('lightbox-prev');
+            const lightboxNext = document.getElementById('lightbox-next');
+            
+            function updateLightboxImages() {
+                lightboxImages = Array.from(document.querySelectorAll('.gallery-image'));
+            }
+            
+            function openLightbox(index) {
+                currentImageIndex = index;
+                const img = lightboxImages[index];
+                const fullSrc = img.getAttribute('data-full');
+                lightboxImage.src = fullSrc;
+                lightboxImage.alt = img.querySelector('img') ? img.querySelector('img').alt : 'صورة من المعرض';
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                lightbox.setAttribute('aria-hidden', 'false');
+            }
+            
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+                lightbox.setAttribute('aria-hidden', 'true');
+            }
+            
+            function nextImage() {
+                currentImageIndex = (currentImageIndex + 1) % lightboxImages.length;
+                const img = lightboxImages[currentImageIndex];
+                lightboxImage.src = img.getAttribute('data-full');
+            }
+            
+            function prevImage() {
+                currentImageIndex = (currentImageIndex - 1 + lightboxImages.length) % lightboxImages.length;
+                const img = lightboxImages[currentImageIndex];
+                lightboxImage.src = img.getAttribute('data-full');
+            }
+            
+            updateLightboxImages();
+            
+            document.addEventListener('click', (e) => {
+                const galleryItem = e.target.closest('.gallery-image');
+                if (galleryItem) {
+                    updateLightboxImages();
+                    const index = lightboxImages.indexOf(galleryItem);
+                    openLightbox(index);
+                }
+            });
+            
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightboxNext.addEventListener('click', nextImage);
+            lightboxPrev.addEventListener('click', prevImage);
+            
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+            
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') nextImage();
+                if (e.key === 'ArrowLeft') prevImage();
+            });
+
+            // ============ عداد الإحصاءات ============
+            function animateCounters() {
+                const counters = document.querySelectorAll('.counter');
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                    const start = performance.now();
+                    
+                    function update(currentTime) {
+                        const elapsed = currentTime - start;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const current = Math.floor(progress * target);
+                        counter.textContent = current + '+';
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(update);
+                        }
+                    }
+                    
+                    requestAnimationFrame(update);
+                });
+            }
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            const countersSection = document.querySelector('.counter')?.closest('section');
+            if (countersSection) observer.observe(countersSection);
+
+            // ============ نظام إرسال الفورم ============
             document.getElementById('whatsappSubmitBtn').addEventListener('click', function() {
-                const name = document.querySelector('input[name="fullName"]').value.trim();
-                const phone = document.querySelector('input[name="phone"]').value.trim();
-                const service = document.querySelector('select[name="service"]').value;
-                const message = document.querySelector('textarea[name="message"]').value.trim();
+                const name = document.getElementById('fullName').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const service = document.getElementById('form-service-select').value;
+                const message = document.getElementById('message').value.trim();
                 
                 if (!name || !phone) {
-                    alert('الرجاء إدخال الاسم ورقم الجوال على الأقل');
+                    alert(currentLang === 'ar' ? 'الرجاء إدخال الاسم ورقم الجوال على الأقل' : 'Please enter at least your name and phone number');
                     return;
                 }
                 
                 const whatsappNumber = '201000046215';
-                const text = `🚪 طلب خدمة جديد من موقع سينسور:\n\n👤 الاسم: ${name}\n📱 الجوال: ${phone}\n🔧 نوع الخدمة: ${service}\n📝 الرسالة: ${message}`;
+                const text = `🚪 ${currentLang === 'ar' ? 'طلب خدمة جديد من موقع سينسور' : 'New service request from Sensor website'}:\n\n👤 ${currentLang === 'ar' ? 'الاسم' : 'Name'}: ${name}\n📱 ${currentLang === 'ar' ? 'الجوال' : 'Phone'}: ${phone}\n🔧 ${currentLang === 'ar' ? 'نوع الخدمة' : 'Service'}: ${service}\n📝 ${currentLang === 'ar' ? 'الرسالة' : 'Message'}: ${message}`;
                 const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
                 window.open(url, '_blank');
             });
 
-            // إرسال إلى Formspree
             const contactForm = document.getElementById('contactForm');
+            const formSuccess = document.getElementById('formSuccess');
+            const formError = document.getElementById('formError');
+            const formLoading = document.getElementById('formLoading');
+            
             contactForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
+                
+                formSuccess.style.display = 'none';
+                formError.style.display = 'none';
+                formLoading.style.display = 'block';
                 
                 const formData = new FormData(contactForm);
                 
@@ -1103,21 +1546,48 @@
                     });
                     
                     if (response.ok) {
-                        document.getElementById('formSuccess').classList.remove('hidden');
-                        document.getElementById('formError').classList.add('hidden');
+                        formSuccess.style.display = 'block';
+                        formError.style.display = 'none';
                         contactForm.reset();
                         setTimeout(() => {
-                            document.getElementById('formSuccess').classList.add('hidden');
+                            formSuccess.style.display = 'none';
                         }, 5000);
                     } else {
-                        document.getElementById('formError').classList.remove('hidden');
-                        document.getElementById('formSuccess').classList.add('hidden');
+                        formError.style.display = 'block';
+                        formSuccess.style.display = 'none';
                     }
                 } catch (error) {
-                    document.getElementById('formError').classList.remove('hidden');
-                    document.getElementById('formSuccess').classList.add('hidden');
+                    formError.style.display = 'block';
+                    formSuccess.style.display = 'none';
+                } finally {
+                    formLoading.style.display = 'none';
                 }
             });
+
+            // ============ إخفاء شريط التحميل ============
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    const loader = document.getElementById('page-loader');
+                    if (loader) {
+                        loader.style.opacity = '0';
+                        loader.style.transition = 'opacity 0.3s';
+                        setTimeout(() => loader.remove(), 300);
+                    }
+                }, 500);
+            });
+
+            // ============ تحسين إمكانية الوصول ============
+            document.querySelectorAll('.door-realistic-frame').forEach(door => {
+                door.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        door.click();
+                    }
+                });
+            });
+
+            console.log('🚪 سينسور للأبواب الأوتوماتيكية - الإصدار المحسن');
+            console.log('✅ تم تحميل جميع الميزات الجديدة بنجاح');
         })();
     </script>
 </body>
